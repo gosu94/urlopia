@@ -119,8 +119,8 @@
     "add_days_confirm": "Czy na pewno chcesz dodać {{daysToAdd}} dni urlopu pracownikowi {{employee}}?",
     "subtr_days_confirm": "Czy na pewno chcesz odjąć {{daysToAdd}} dni urlopu pracownikowi {{employee}}?",
     "days_left": "Pozostały urlop: {{days}} dni {{hours}} godzin.",
-    "shift": "Etat {{workTime_a}}/{{workTime_b}}",
-    "full_time": "Pełen etat",
+    "shift": "etat {{workTime_a}}/{{workTime_b}}",
+    "full_time": "pełen etat",
     "modify_pool": "Zmień pulę urlopu",
     "mail": "Adres e-mail",
     "all_teams": "Wszystkie zespoły",
@@ -138,7 +138,8 @@
     "EC_employees": "Pracownicy na etacie",
     "EC_employee": "etat",
     "type_of_job": "Rodzaj zatrudnienia",
-    "contract_issue": "brak umowy"
+    "contract_issue": "brak umowy",
+    "works_on": "Pracownik jest zatrudniony na "
   },
   "workers_view": {
     "days_left": "Pozostało {{days}} dni {{hours}} godzin urlopu.",

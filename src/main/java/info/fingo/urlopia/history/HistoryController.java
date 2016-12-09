@@ -123,6 +123,16 @@ public class HistoryController {
         return status;
     }
 
+
+    @RolesAllowed("ROLES_ADMIN")
+    @RequestMapping(value ="/api/history/setWorkTime", method = RequestMethod.POST)
+    public HttpStatus setWorkTime(String mail, float workTime) {
+        userService.setWorkTime(mail, workTime);
+
+        return HttpStatus.OK;
+    }
+
+
     private void getResponses(List<HistoryDTO> histories, List<HistoryResponse> historyResponses) {
         for (int i = 0; i < histories.size(); i++) {
             if (i == 0) historyResponses.add(new HistoryResponse(histories.get(i), histories.get(i).getHours()));

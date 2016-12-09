@@ -159,6 +159,15 @@ body {
     border-radius: 0 0 15px 15px;
 }
 
+#employees .padded {
+    line-height: 2em;
+}
+
+#employees .comment {
+    min-height: 2em;
+    height: 4em;
+}
+
 /*CONFIRM MODAL*/
 
 div.days_confirm_text{
