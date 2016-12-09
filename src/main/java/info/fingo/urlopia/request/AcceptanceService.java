@@ -107,12 +107,12 @@ public class AcceptanceService {
         return success;
     }
 
-    public boolean reject(long id, long deciderId) {
-        Acceptance acceptance = acceptanceRepository.findOne(id);
+    public boolean reject(long acceptanceId, long deciderId) {
+        Acceptance acceptance = acceptanceRepository.findOne(acceptanceId);
         User decider = userRepository.findOne(deciderId);
         boolean success = false;
 
-        if ((acceptance.getDecider() == null    // rejecting/rejecting is accepted only once
+        if ((acceptance.getDecider() == null    // rejecting is accepted only once
                 && (acceptance.getLeader().getId() == decider.getId() || decider.isAdmin())) // and only by leader or admin
                 || acceptance.getRequest().getRequester().getId() == decider.getId()) {   // canceling is always possible
             acceptance.setAccepted(false);

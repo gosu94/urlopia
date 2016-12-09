@@ -167,8 +167,8 @@ public class RequestService {
         return success;
     }
 
-    public boolean reject(long id, long deciderId) {
-        List<AcceptanceDTO> acceptances = acceptanceService.getAcceptancesFromRequest(id);
+    public boolean reject(long requestId, long deciderId) {
+        List<AcceptanceDTO> acceptances = acceptanceService.getAcceptancesFromRequest(requestId);
         boolean success = true;
 
         for (AcceptanceDTO acceptance : acceptances) {
@@ -180,8 +180,8 @@ public class RequestService {
         return success;
     }
 
-    public boolean cancel(long id) {
-        List<AcceptanceDTO> acceptances = acceptanceService.getAcceptancesFromRequest(id);
+    public boolean cancel(long requestId, long deciderId) {
+        List<AcceptanceDTO> acceptances = acceptanceService.getAcceptancesFromRequest(requestId);
         boolean success = true;
         boolean cancelingAfterAccepting = true;
 
@@ -191,14 +191,14 @@ public class RequestService {
                 cancelingAfterAccepting = false;
             }
 
-            if (!acceptanceService.reject(acceptance.getId(), acceptance.getRequest().getRequester().getId())) {
+            if (!acceptanceService.reject(acceptance.getId(), deciderId)) {
                 success = false;
             }
         }
 
         // reverting days pool
         if (success && cancelingAfterAccepting) {
-            historyService.insertReversed(getRequest(id));
+            historyService.insertReversed(getRequest(requestId));
         }
 
         return success;

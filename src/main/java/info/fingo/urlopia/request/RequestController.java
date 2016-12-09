@@ -113,7 +113,7 @@ public class RequestController {
         } else if ("reject".equals(action)) {
             requestService.reject(requestId, userId);
         } else if ("cancel".equals(action)) {
-            requestService.cancel(requestId);
+            requestService.cancel(requestId, userId);
         }
         map.put("value", true);
         return map;
@@ -133,12 +133,12 @@ public class RequestController {
 
     @RolesAllowed({"ROLES_WORKER"})
     @RequestMapping(value = "/api/request/cancelRequest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void cancelRequest(@RequestBody Map<String, String> data) {
+    public void cancelRequest(HttpServletRequest request, @RequestBody Map<String, String> data) {
         long requestId = Long.valueOf(data.get("requestID"));
         String action = data.get("action");
 
         if ("cancelRequest".equals(action)) {
-            requestService.cancel(requestId);
+            requestService.cancel(requestId, (long) request.getAttribute("userId"));
         }
     }
 }

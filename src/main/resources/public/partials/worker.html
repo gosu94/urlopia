@@ -63,7 +63,7 @@
                             {{'table.denied' | translate}}
 
                             <span ng-repeat="acceptance in request.acceptances">
-                            <span ng-if="!acceptance.accepted"><br>{{acceptance.leader.name}}</span>
+                            <span ng-if="!acceptance.accepted"><br>{{acceptance.decider.name}}</span>
                         </span>
                         </div>
                         <span ng-if="request.accepted == false && request.cancelled == true">{{'table.cancelled' | translate}}</span>

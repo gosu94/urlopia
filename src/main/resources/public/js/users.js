@@ -490,6 +490,7 @@ app.controller('ConfirmDaysCtrl', function ($scope, $uibModalInstance, $translat
         $scope.toAdd = parseFloat(confirmData.daysToAdd);
     }
 
+
     $scope.confirm = function () {
         API.setUrl("/api/history").save({
             mail: confirmData.mail,
